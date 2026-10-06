@@ -1,0 +1,697 @@
+{
+  "scope": "controlled camera-response stress test on real multicolour fish texture maps",
+  "limitation": "not a field calibration; raw fish photographs and fish-specific chart frames were not available",
+  "texture_count": 8,
+  "camera_conditions": 2,
+  "evaluated_outputs": 16,
+  "summary": {
+    "mean_delta_e76_before": 3.136282727122307,
+    "mean_delta_e76_after": 0.1581415480177384,
+    "mean_relative_delta_e76_reduction": 0.9572994383096757,
+    "minimum_relative_delta_e76_reduction": 0.8922334189549432,
+    "maximum_foreground_clipping_increase_percentage_points": 0.0,
+    "acceptance_criteria": {
+      "every_sample_delta_e76_reduction_at_least_50_percent": true,
+      "mean_delta_e76_reduction_at_least_75_percent": true,
+      "no_foreground_clipping_increase_over_0_50_percentage_points": true,
+      "all_images_processed_without_skips": true
+    },
+    "result": "pass"
+  },
+  "pipeline_report": {
+    "calibration_mode": "relative",
+    "target_name": null,
+    "reference_camera": "camera1",
+    "camera_regex": "camera[0-9]+",
+    "ridge": 1e-06,
+    "matrices": {
+      "camera1": [
+        [
+          1.0,
+          0.0,
+          0.0
+        ],
+        [
+          0.0,
+          1.0,
+          0.0
+        ],
+        [
+          0.0,
+          0.0,
+          1.0
+        ]
+      ],
+      "camera2": [
+        [
+          1.3815171718597412,
+          -0.038727857172489166,
+          -0.02955457754433155
+        ],
+        [
+          -0.08174796402454376,
+          1.4326584339141846,
+          -0.04963752254843712
+        ],
+        [
+          -0.033403199166059494,
+          -0.1019468605518341,
+          1.3193563222885132
+        ]
+      ],
+      "camera3": [
+        [
+          0.9281270503997803,
+          -0.0005662432522512972,
+          -0.004165331833064556
+        ],
+        [
+          0.001349116675555706,
+          0.9145684242248535,
+          0.02199975587427616
+        ],
+        [
+          0.002758692717179656,
+          -0.012397436425089836,
+          0.9556347131729126
+        ]
+      ]
+    },
+    "metrics": {
+      "camera1": {
+        "mean_delta_e76_before": 0.0,
+        "median_delta_e76_before": 0.0,
+        "mean_delta_e76_after": 0.0,
+        "median_delta_e76_after": 0.0
+      },
+      "camera2": {
+        "mean_delta_e76_before": 9.225929260253906,
+        "median_delta_e76_before": 8.274778366088867,
+        "mean_delta_e76_after": 0.3186304271221161,
+        "median_delta_e76_after": 0.29390570521354675
+      },
+      "camera3": {
+        "mean_delta_e76_before": 3.824009656906128,
+        "median_delta_e76_before": 3.746720790863037,
+        "mean_delta_e76_after": 0.2874099314212799,
+        "median_delta_e76_after": 0.3007037043571472
+      }
+    },
+    "patch_centers_rectified": {
+      "camera1": [
+        [
+          75.0,
+          70.0
+        ],
+        [
+          165.0,
+          72.0
+        ],
+        [
+          255.0,
+          74.0
+        ],
+        [
+          345.0,
+          76.0
+        ],
+        [
+          435.0,
+          78.0
+        ],
+        [
+          525.0,
+          80.0
+        ],
+        [
+          72.0,
+          150.0
+        ],
+        [
+          162.0,
+          152.0
+        ],
+        [
+          252.0,
+          154.0
+        ],
+        [
+          342.0,
+          156.0
+        ],
+        [
+          432.0,
+          158.0
+        ],
+        [
+          522.0,
+          160.0
+        ],
+        [
+          69.0,
+          230.0
+        ],
+        [
+          159.0,
+          232.0
+        ],
+        [
+          249.0,
+          234.0
+        ],
+        [
+          339.0,
+          236.0
+        ],
+        [
+          429.0,
+          238.0
+        ],
+        [
+          519.0,
+          240.0
+        ],
+        [
+          66.0,
+          310.0
+        ],
+        [
+          156.0,
+          312.0
+        ],
+        [
+          246.0,
+          314.0
+        ],
+        [
+          336.0,
+          316.0
+        ],
+        [
+          426.0,
+          318.0
+        ],
+        [
+          516.0,
+          320.0
+        ]
+      ],
+      "camera2": [
+        [
+          75.0,
+          70.0
+        ],
+        [
+          165.0,
+          72.0
+        ],
+        [
+          255.0,
+          74.0
+        ],
+        [
+          345.0,
+          76.0
+        ],
+        [
+          435.0,
+          78.0
+        ],
+        [
+          525.0,
+          80.0
+        ],
+        [
+          72.0,
+          150.0
+        ],
+        [
+          162.0,
+          152.0
+        ],
+        [
+          252.0,
+          154.0
+        ],
+        [
+          342.0,
+          156.0
+        ],
+        [
+          432.0,
+          158.0
+        ],
+        [
+          522.0,
+          160.0
+        ],
+        [
+          69.0,
+          230.0
+        ],
+        [
+          159.0,
+          232.0
+        ],
+        [
+          249.0,
+          234.0
+        ],
+        [
+          339.0,
+          236.0
+        ],
+        [
+          429.0,
+          238.0
+        ],
+        [
+          519.0,
+          240.0
+        ],
+        [
+          66.0,
+          310.0
+        ],
+        [
+          156.0,
+          312.0
+        ],
+        [
+          246.0,
+          314.0
+        ],
+        [
+          336.0,
+          316.0
+        ],
+        [
+          426.0,
+          318.0
+        ],
+        [
+          516.0,
+          320.0
+        ]
+      ],
+      "camera3": [
+        [
+          75.0,
+          70.0
+        ],
+        [
+          165.0,
+          72.0
+        ],
+        [
+          255.0,
+          74.0
+        ],
+        [
+          345.0,
+          76.0
+        ],
+        [
+          435.0,
+          78.0
+        ],
+        [
+          525.0,
+          80.0
+        ],
+        [
+          72.0,
+          150.0
+        ],
+        [
+          162.0,
+          152.0
+        ],
+        [
+          252.0,
+          154.0
+        ],
+        [
+          342.0,
+          156.0
+        ],
+        [
+          432.0,
+          158.0
+        ],
+        [
+          522.0,
+          160.0
+        ],
+        [
+          69.0,
+          230.0
+        ],
+        [
+          159.0,
+          232.0
+        ],
+        [
+          249.0,
+          234.0
+        ],
+        [
+          339.0,
+          236.0
+        ],
+        [
+          429.0,
+          238.0
+        ],
+        [
+          519.0,
+          240.0
+        ],
+        [
+          66.0,
+          310.0
+        ],
+        [
+          156.0,
+          312.0
+        ],
+        [
+          246.0,
+          314.0
+        ],
+        [
+          336.0,
+          316.0
+        ],
+        [
+          426.0,
+          318.0
+        ],
+        [
+          516.0,
+          320.0
+        ]
+      ]
+    },
+    "chart_corners": {
+      "camera1": [
+        [
+          100.0,
+          100.0
+        ],
+        [
+          699.0,
+          100.0
+        ],
+        [
+          699.0,
+          499.0
+        ],
+        [
+          100.0,
+          499.0
+        ]
+      ],
+      "camera2": [
+        [
+          100.0,
+          100.0
+        ],
+        [
+          699.0,
+          100.0
+        ],
+        [
+          699.0,
+          499.0
+        ],
+        [
+          100.0,
+          499.0
+        ]
+      ],
+      "camera3": [
+        [
+          100.0,
+          100.0
+        ],
+        [
+          699.0,
+          100.0
+        ],
+        [
+          699.0,
+          499.0
+        ],
+        [
+          100.0,
+          499.0
+        ]
+      ]
+    },
+    "processed_images": {
+      "camera1": 8,
+      "camera2": 8,
+      "camera3": 8
+    },
+    "clipping": {
+      "camera1": {
+        "percent_before": 0.0,
+        "percent_after": 0.0
+      },
+      "camera2": {
+        "percent_before": 0.0,
+        "percent_after": 0.0
+      },
+      "camera3": {
+        "percent_before": 0.0,
+        "percent_after": 0.0
+      }
+    },
+    "mask_clipping": {
+      "camera1": {
+        "images_with_masks": 8,
+        "foreground_pixels": 8388608,
+        "percent_before": 0.0,
+        "percent_after": 0.0,
+        "increase_percent": 0.0,
+        "warning": false
+      },
+      "camera2": {
+        "images_with_masks": 8,
+        "foreground_pixels": 8388608,
+        "percent_before": 0.0,
+        "percent_after": 0.0,
+        "increase_percent": 0.0,
+        "warning": false
+      },
+      "camera3": {
+        "images_with_masks": 8,
+        "foreground_pixels": 8388608,
+        "percent_before": 0.0,
+        "percent_after": 0.0,
+        "increase_percent": 0.0,
+        "warning": false
+      }
+    },
+    "mask_clipping_thresholds": {
+      "warning_percent": 1.0,
+      "max_increase_percent": 0.5
+    },
+    "skipped_images": []
+  },
+  "samples": [
+    {
+      "texture": "GT_fish_Mchenga_male1_lowpoly_diffuse.1001.png",
+      "sample": "fish01",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 4.915803909301758,
+      "mean_delta_e76_after": 0.27952611446380615,
+      "relative_delta_e76_reduction": 0.9431372529048845,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_Mchenga_male1_lowpoly_diffuse.1001.png",
+      "sample": "fish01",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 2.5212631225585938,
+      "mean_delta_e76_after": 0.007102664094418287,
+      "relative_delta_e76_reduction": 0.9971828945456472,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_Nimbo_female1_lowpoly_diffuse.1001.png",
+      "sample": "fish02",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 3.8745920658111572,
+      "mean_delta_e76_after": 0.35199272632598877,
+      "relative_delta_e76_reduction": 0.9091536036962647,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_Nimbo_female1_lowpoly_diffuse.1001.png",
+      "sample": "fish02",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 2.4783215522766113,
+      "mean_delta_e76_after": 0.013105494901537895,
+      "relative_delta_e76_reduction": 0.9947119473300391,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_Nimbochromis_female2_lowpoly_diffuse.1001.png",
+      "sample": "fish03",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 4.117652893066406,
+      "mean_delta_e76_after": 0.22270891070365906,
+      "relative_delta_e76_reduction": 0.9459136268919918,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_Nimbochromis_female2_lowpoly_diffuse.1001.png",
+      "sample": "fish03",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 2.5229477882385254,
+      "mean_delta_e76_after": 0.012068004347383976,
+      "relative_delta_e76_reduction": 0.9952167046802781,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male1_lowpoly_diffuse.1001.png",
+      "sample": "fish04",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 3.7057111263275146,
+      "mean_delta_e76_after": 0.3393424153327942,
+      "relative_delta_e76_reduction": 0.9084271807044242,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male1_lowpoly_diffuse.1001.png",
+      "sample": "fish04",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 2.338275194168091,
+      "mean_delta_e76_after": 0.07175040245056152,
+      "relative_delta_e76_reduction": 0.9693148169088417,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male2_lowpoly_diffuse.1001.png",
+      "sample": "fish05",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 3.8434314727783203,
+      "mean_delta_e76_after": 0.30294734239578247,
+      "relative_delta_e76_reduction": 0.92117789934816,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male2_lowpoly_diffuse.1001.png",
+      "sample": "fish05",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 2.3296663761138916,
+      "mean_delta_e76_after": 0.009115884080529213,
+      "relative_delta_e76_reduction": 0.9960870431174204,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male3_lowpoly_diffuse.1001.png",
+      "sample": "fish06",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 4.081892013549805,
+      "mean_delta_e76_after": 0.22876720130443573,
+      "relative_delta_e76_reduction": 0.9439555969278351,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male3_lowpoly_diffuse.1001.png",
+      "sample": "fish06",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 2.4259142875671387,
+      "mean_delta_e76_after": 0.009481953456997871,
+      "relative_delta_e76_reduction": 0.996091389747118,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male4_lowpoly_diffuse.1001.png",
+      "sample": "fish07",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 3.0234761238098145,
+      "mean_delta_e76_after": 0.3258296847343445,
+      "relative_delta_e76_reduction": 0.8922334189549432,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male4_lowpoly_diffuse.1001.png",
+      "sample": "fish07",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 1.8645949363708496,
+      "mean_delta_e76_after": 0.004615857265889645,
+      "relative_delta_e76_reduction": 0.997524471843266,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male5_lowpoly_diffuse.1001.png",
+      "sample": "fish08",
+      "camera": "camera2",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 3.856682300567627,
+      "mean_delta_e76_after": 0.3402504324913025,
+      "relative_delta_e76_reduction": 0.9117763906969406,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    },
+    {
+      "texture": "GT_fish_yellowhead_male5_lowpoly_diffuse.1001.png",
+      "sample": "fish08",
+      "camera": "camera3",
+      "foreground_pixels": 1048576,
+      "synthesis_clipped_percent": 0.0,
+      "mean_delta_e76_before": 2.2802984714508057,
+      "mean_delta_e76_after": 0.011659679934382439,
+      "relative_delta_e76_reduction": 0.9948867746567561,
+      "foreground_clipped_percent_before": 0.0,
+      "foreground_clipped_percent_after": 0.0
+    }
+  ]
+}

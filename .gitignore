@@ -169,3 +169,24 @@ pace_slurm_verify/
 
 # Generated tables/figures (not build products of the pipeline)
 artifacts/
+
+# Local research-document hygiene and public-repository privacy boundary
+.DS_Store
+**/.DS_Store
+.ruff_cache/
+~$*
+
+# Separate local implementation checkout, when present.
+team-repo/
+
+# Private or third-party reports recovered from Slack. Keep only curated
+# summaries and Mohamed's own weekly reports in this public repository.
+documentation/Rizvi_Porto_Lab_Spring_26_Report.pdf
+documentation/Tianshu_Wu_CS8903_Final_Report.pdf
+documentation/weekly-reports/2026-fall/Ihor/
+documentation/weekly-reports/2026-fall/Om/
+documentation/weekly-reports/2026-fall/Syed/
+
+# Superseded Week 5 working copies; V2 is the verified final document.
+output/docx/Week 5 Report - Mohamed.docx
+output/docx/Week 5 Report - Mohamed - Literature Review Corrected.docx

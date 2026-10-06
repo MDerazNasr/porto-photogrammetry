@@ -1,0 +1,163 @@
+\documentclass[10pt]{article}
+
+\usepackage[letterpaper,margin=0.82in]{geometry}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+\usepackage{parskip}
+\usepackage{enumitem}
+\usepackage{array}
+\usepackage{longtable}
+\usepackage{booktabs}
+\usepackage[table]{xcolor}
+\usepackage{needspace}
+\usepackage[hidelinks]{hyperref}
+\hypersetup{
+    pdftitle={Building an Open-Source Photogrammetry Pipeline for Museum Specimens},
+    pdfauthor={Mohamed Deraz Nasr},
+    pdfsubject={CS 8903 research statement for Dr. Arthur Porto's Photogrammetry Project}
+}
+
+\definecolor{tablehead}{HTML}{E8EEF5}
+\definecolor{rulegray}{HTML}{AAB4C0}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{5pt}
+\setlist[itemize]{leftmargin=1.25em,itemsep=2pt,topsep=3pt}
+\renewcommand{\arraystretch}{1.22}
+
+\newcommand{\sectionrule}{\vspace{-4pt}\color{rulegray}\hrule\color{black}\vspace{5pt}}
+
+\begin{document}
+
+\begin{center}
+    {\LARGE\bfseries Building an Open-Source Photogrammetry Pipeline for Museum Specimens}\par
+    \vspace{8pt}
+    \textbf{Student:} Mohamed Deraz Nasr \quad
+    \textbf{Project lead:} Dr. Arthur Porto \quad
+    \textbf{Course:} CS 8903
+\end{center}
+
+\section*{Projected Abstract}
+\sectionrule
+
+Museum labs need a dependable way to turn specimen photos into accurate, colored 3D models. Modern open-source methods can estimate camera poses, render new views, and extract meshes. In practice, each method uses different commands, data layouts, software versions, and output formats. This makes the full process hard to install, compare, and repeat.
+
+I will build an open-source photogrammetry pipeline that joins image checks, masking, camera pose estimation, Gaussian surface reconstruction, mesh cleanup, evaluation, and export. The system will use one data format and one command interface. COLMAP will provide the main camera poses, with VGGT as an optional fast path. The first reconstruction backends will be 2D Gaussian Splatting, SuGaR, and PGSR. Each backend will run through the same inputs, logs, limits, and output rules.
+
+I will test the pipeline on public benchmark scenes and museum specimens. Tests will measure geometric quality, rendered image quality, runtime, GPU memory, failure rate, and repeatability. The final release will include source code, containers, fixed configurations, tests, example data, and a short user guide. The goal is a clear and maintainable tool that museum teams can run, inspect, and extend without rebuilding each research method from scratch.
+
+\section*{Research Question and Scope}
+\sectionrule
+
+The main research question is:
+
+\begin{quote}
+Can a modular open-source pipeline make modern Gaussian-based photogrammetry repeatable and practical for museum specimens while preserving the quality of each reconstruction method?
+\end{quote}
+
+The project will focus on the full path from a folder of images to a tested, textured mesh. It will integrate existing methods rather than propose a new rendering model. The research value will come from a fair backend comparison, clear quality checks, repeatable environments, and evidence about which pipeline choices work on museum data.
+
+\textbf{Expected hypotheses}
+
+\begin{itemize}
+    \item A shared data contract and fixed configurations will reproduce each backend within a small tolerance across clean installations.
+    \item Automated image, mask, pose, and mesh checks will catch common failures before a bad model reaches the final export.
+    \item No single backend will be best for every specimen; matched tests will expose useful tradeoffs in surface quality, color, runtime, and GPU memory.
+\end{itemize}
+
+\section*{Work Plan}
+\sectionrule
+
+\textbf{1. Reproduce prior work.} I will reproduce the main paths described in the two prior Porto Lab reports. I will record code versions, commands, environments, runtime, GPU memory, and outputs. This will define the starting baseline and reveal any steps that still rely on manual changes.
+
+\textbf{2. Define a modular pipeline.} I will divide the system into image intake, masking, pose estimation, reconstruction, mesh processing, evaluation, and export stages. Each stage will use a typed configuration and a documented input-output contract. Camera data will use the COLMAP format so pose and reconstruction methods can be exchanged without changing the rest of the pipeline.
+
+\textbf{3. Add input checks and masks.} A Python and OpenCV stage will check file types, image size, blur, exposure, view count, and metadata. A masking adapter will create or import foreground masks and will flag weak masks around thin parts or image borders. The system will save every derived input instead of changing source files.
+
+\textbf{4. Add camera pose backends.} COLMAP will serve as the stable default for structure from motion and bundle adjustment. I will keep VGGT as an optional backend when it fits the available GPU memory. Both paths will export the same camera, image, and sparse-point files. Pose checks will report registered views, reprojection error, track counts, and scene scale.
+
+\textbf{5. Add surface reconstruction backends.} I will wrap 2D Gaussian Splatting, SuGaR, and PGSR behind one Python interface. Each adapter will translate the common dataset and configuration into the backend's commands, then return checkpoints, renders, meshes, logs, and failure states in the same output layout. Separate containers may be used when CUDA or library versions conflict.
+
+\textbf{6. Process and export meshes.} Open3D and Trimesh will remove small disconnected components, compute normals, check holes and non-manifold edges, and record each change. When supported, the pipeline will preserve or bake color and texture. It will export PLY or OBJ for analysis and GLB for web viewing.
+
+\textbf{7. Evaluate the system.} I will first use DTU scenes with known cameras and reference scans. I will then test museum skulls or other specimens from the project. Metrics will include Chamfer distance, F-score, normal consistency, PSNR, SSIM, LPIPS, runtime, peak GPU memory, repeatability, and failure rate. Meshroom and prior report outputs will serve as practical references when no scan is available.
+
+\textbf{8. Release and document the pipeline.} Docker, Hydra, and structured logs will record the software and experiment settings. Pytest will cover data loading, camera conversion, backend calls, and output validation. GitHub Actions will run CPU-safe checks. The release will include installation steps, one-command examples, troubleshooting notes, sample configurations, and clear rules for adding another backend.
+
+\section*{Week-by-Week Project Scope}
+\sectionrule
+
+{\small
+\setlength{\tabcolsep}{4pt}
+\begin{longtable}{>{\raggedright\arraybackslash}p{0.05\textwidth}
+                  >{\raggedright\arraybackslash}p{0.39\textwidth}
+                  >{\raggedright\arraybackslash}p{0.24\textwidth}
+                  >{\raggedright\arraybackslash}p{0.24\textwidth}}
+\toprule
+\rowcolor{tablehead}
+\textbf{Week} & \textbf{Activities} & \textbf{Resources} & \textbf{Contingency plan} \\
+\midrule
+\endfirsthead
+
+\toprule
+\rowcolor{tablehead}
+\textbf{Week} & \textbf{Activities} & \textbf{Resources} & \textbf{Contingency plan} \\
+\midrule
+\endhead
+
+\midrule
+\multicolumn{4}{r}{\footnotesize Continued on next page} \\
+\endfoot
+
+\bottomrule
+\endlastfoot
+
+1 & Review the current code and prior reports. Reproduce one known specimen run and record every manual step. & Existing Porto code, prior outputs, Git, PACE. & Use the reports' saved configs and one small public scene if old data is missing. \\
+
+2 & Define the pipeline stages, common data layout, configuration schema, and output manifest. & Python, dataclasses or Pydantic, Hydra, COLMAP format. & Support the current folder layout first, then add migration tools. \\
+
+3 & Build containers and lock Python, PyTorch, CUDA, compiler, and submodule versions. & Docker, Conda, CUDA, Git submodules. & Use separate backend images if one environment cannot support all methods. \\
+
+4 & Add image intake, metadata checks, blur and exposure tests, and a machine-readable quality report. & Python, OpenCV, ExifTool, pytest. & Start with warnings rather than hard rejection while thresholds are tuned. \\
+
+5 & Add mask import and generation, plus mask previews and edge checks. & SAM 2 adapter, OpenCV, stored PNG masks. & Accept user-supplied masks if automatic masks fail on thin parts. \\
+
+6 & Add the COLMAP pose stage and validate camera export, scale, tracks, and reprojection error. & COLMAP, pycolmap, NumPy, unit tests. & Accept a known COLMAP model so later stages can proceed during pose debugging. \\
+
+7 & Add the optional VGGT pose adapter and convert its output to the same camera contract. & VGGT, PyTorch, pycolmap, PACE GPUs. & Keep COLMAP as the default if VGGT exceeds available GPU memory. \\
+
+8 & Add the 2D Gaussian Splatting adapter, mesh extraction, logs, and a smoke test. & 2DGS, CUDA rasterizer, Open3D. & Use the official DTU example before testing museum images. \\
+
+9 & Add the SuGaR adapter, refined mesh and texture export, logs, and a smoke test. & SuGaR, PyTorch, nvdiffrast, Blender export. & Run the coarse mesh path first if refinement is unstable. \\
+
+10 & Add the PGSR adapter, TSDF mesh extraction, logs, and a smoke test. & PGSR, CUDA, Open3D TSDF tools. & Use fixed depth and voxel settings from the prior report as a starting point. \\
+
+11 & Add common mesh cleanup, color export, validation, and output manifests for all backends. & Open3D, Trimesh, Blender Python API, GLB tools. & Export untextured PLY meshes first if texture baking is delayed. \\
+
+12 & Build the benchmark runner and compute geometry, image, runtime, memory, and failure metrics. & DTU tools, PyTorch3D, PSNR, SSIM, LPIPS, MLflow. & Run geometry metrics on DTU and qualitative checks on specimens without scans. \\
+
+13 & Reproduce public benchmark results and check run-to-run and clean-install consistency. & DTU scenes, fixed seeds, fresh container, PACE. & Reduce the benchmark set while keeping one easy and one hard scene. \\
+
+14 & Test the full pipeline on museum specimens and compare the three backends under one resource budget. & Museum images, masks, Meshroom or prior outputs. & Limit the study to two representative specimens if full runs exceed the budget. \\
+
+15 & Fix failure cases, finish tests, package the command-line interface, and write user and developer guides. & pytest, GitHub Actions, Docker, Markdown documentation. & Mark unsupported cases and provide a stable manual override instead of hiding failures. \\
+
+16 & Run a clean end-to-end release test. Archive configs and results, publish the code, and write the final report. & Clean Linux environment, release checklist, LaTeX, repository. & Release the verified core path and list unfinished backends as optional or experimental. \\
+
+\end{longtable}
+}
+
+\section*{Selected References}
+\sectionrule
+
+\begin{enumerate}[label={[\arabic*]},leftmargin=2em]
+    \item Wu, T. \textit{Multi-View Photogrammetry for Museum Specimens: Pose Estimation, Neural Rendering, and Mesh Reconstruction}. CS 8903 Final Report, 2026.
+    \item Rizvi, S. M. F. \textit{Augenblick: A Modular Photogrammetry Pipeline}. Porto Lab Report, 2026.
+    \item Sch\"onberger, J. L., and Frahm, J.-M. \textit{Structure-from-Motion Revisited}. CVPR, 2016.
+    \item Huang et al. \textit{2D Gaussian Splatting for Geometrically Accurate Radiance Fields}. SIGGRAPH, 2024.
+    \item Gu\'edon, A., and Lepetit, V. \textit{SuGaR: Surface-Aligned Gaussian Splatting for Efficient 3D Mesh Reconstruction and High-Quality Mesh Rendering}. CVPR, 2024.
+    \item Chen et al. \textit{PGSR: Planar-Based Gaussian Splatting for Efficient and High-Fidelity Surface Reconstruction}. IEEE TVCG, 2024.
+\end{enumerate}
+
+\end{document}

@@ -1,0 +1,373 @@
+{
+  "method": "leave-one-patch-out",
+  "models": {},
+  "comparisons": [
+    {
+      "UF_Herp_3998/camera2": {
+        "patch_count": 24,
+        "models": {
+          "linear_3x3": {
+            "mean_held_out_delta_e76": 3.5788440704345703,
+            "median_held_out_delta_e76": 3.102869749069214,
+            "max_held_out_delta_e76": 8.631839752197266,
+            "mean_full_fit_delta_e76": 3.131103515625,
+            "full_reference_image": {
+              "clipped_percent_before": 43.89299417529586,
+              "clipped_percent_after": 52.15186221030572,
+              "mean_absolute_change_8bit": 9.408048403085964
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 1.1102230246251565e-16,
+            "coefficients": [
+              [
+                1.3841366561947563,
+                -0.03343406469926841,
+                -0.03309704658044
+              ],
+              [
+                -0.0846118429843602,
+                1.4258358709861232,
+                -0.0451338283894007
+              ],
+              [
+                -0.03111411956991593,
+                -0.10168104651352393,
+                1.3196207236539599
+              ]
+            ]
+          },
+          "root_polynomial_degree_2": {
+            "mean_held_out_delta_e76": 3.6846115589141846,
+            "median_held_out_delta_e76": 3.402350902557373,
+            "max_held_out_delta_e76": 8.758676528930664,
+            "mean_full_fit_delta_e76": 2.7518301010131836,
+            "full_reference_image": {
+              "clipped_percent_before": 43.89299417529586,
+              "clipped_percent_after": 51.9976423816568,
+              "mean_absolute_change_8bit": 9.052628436267259
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 2.220446049250313e-16,
+            "coefficients": [
+              [
+                1.4798487176600505,
+                0.0002871012553381422,
+                -0.06360148988955315
+              ],
+              [
+                0.1988914991133804,
+                1.6254944979969044,
+                -0.10379894441192342
+              ],
+              [
+                -0.04179088667993049,
+                0.022360227486935176,
+                1.4076034092608503
+              ],
+              [
+                -0.37796505241256767,
+                -0.13558662944921118,
+                0.15046679535599558
+              ],
+              [
+                0.13827985818446298,
+                0.03644592376439795,
+                -0.08590321648719386
+              ],
+              [
+                -0.13573482396507655,
+                -0.2766572239094659,
+                -0.07191591564942633
+              ]
+            ]
+          }
+        },
+        "root_minus_linear": {
+          "mean_held_out_delta_e76": 0.10576725006103516,
+          "patches_better": 10,
+          "patches_worse": 13,
+          "clipped_percent_after_difference": -0.1542198286489196
+        }
+      }
+    },
+    {
+      "UF_Herp_3998/camera3": {
+        "patch_count": 24,
+        "models": {
+          "linear_3x3": {
+            "mean_held_out_delta_e76": 1.6052805185317993,
+            "median_held_out_delta_e76": 1.4977962970733643,
+            "max_held_out_delta_e76": 3.7235653400421143,
+            "mean_full_fit_delta_e76": 1.4322566986083984,
+            "full_reference_image": {
+              "clipped_percent_before": 58.518082778599606,
+              "clipped_percent_after": 0.0,
+              "mean_absolute_change_8bit": 6.698514700443787
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 1.1102230246251565e-16,
+            "coefficients": [
+              [
+                0.9266139346278837,
+                -0.0005689320732482814,
+                -0.003911195569931977
+              ],
+              [
+                0.0037224618536563126,
+                0.9142078513284044,
+                0.02141515139678077
+              ],
+              [
+                0.001873345342139661,
+                -0.013064619933507934,
+                0.9563131030543607
+              ]
+            ]
+          },
+          "root_polynomial_degree_2": {
+            "mean_held_out_delta_e76": 2.012233018875122,
+            "median_held_out_delta_e76": 1.7472081184387207,
+            "max_held_out_delta_e76": 5.227921485900879,
+            "mean_full_fit_delta_e76": 1.500064492225647,
+            "full_reference_image": {
+              "clipped_percent_before": 58.518082778599606,
+              "clipped_percent_after": 0.0,
+              "mean_absolute_change_8bit": 6.065459697053748
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 2.220446049250313e-16,
+            "coefficients": [
+              [
+                0.8949215218768392,
+                -0.02188378723491668,
+                -0.03093108132331775
+              ],
+              [
+                -0.07874299552632734,
+                0.8974177428572325,
+                -0.042784531928343625
+              ],
+              [
+                -0.0018478484310092413,
+                -0.01882139375227329,
+                0.907055678846646
+              ],
+              [
+                0.11181082203381393,
+                0.0359581596685314,
+                0.061528109894427585
+              ],
+              [
+                -0.02962591820106083,
+                0.024772324219303414,
+                0.018747566274278513
+              ],
+              [
+                0.04071731882283045,
+                -0.01282107589775115,
+                0.07153012940587343
+              ]
+            ]
+          }
+        },
+        "root_minus_linear": {
+          "mean_held_out_delta_e76": 0.40695223212242126,
+          "patches_better": 6,
+          "patches_worse": 18,
+          "clipped_percent_after_difference": 0.0
+        }
+      }
+    },
+    {
+      "UF_birds_ivory2/camera2": {
+        "patch_count": 24,
+        "models": {
+          "linear_3x3": {
+            "mean_held_out_delta_e76": 3.2465503215789795,
+            "median_held_out_delta_e76": 2.8546242713928223,
+            "max_held_out_delta_e76": 9.089155197143555,
+            "mean_full_fit_delta_e76": 2.8662197589874268,
+            "full_reference_image": {
+              "clipped_percent_before": 0.04982587524654832,
+              "clipped_percent_after": 67.56142905571993,
+              "mean_absolute_change_8bit": 11.758430437417816
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 1.1102230246251565e-16,
+            "coefficients": [
+              [
+                1.4261762871887453,
+                -0.04186352122480809,
+                -0.026521593887209184
+              ],
+              [
+                -0.08993242423390428,
+                1.4599828379287019,
+                -0.04389864486701661
+              ],
+              [
+                -0.035629904636272074,
+                -0.0884051606668126,
+                1.3277987248453191
+              ]
+            ]
+          },
+          "root_polynomial_degree_2": {
+            "mean_held_out_delta_e76": 3.072474241256714,
+            "median_held_out_delta_e76": 2.807218313217163,
+            "max_held_out_delta_e76": 6.33687686920166,
+            "mean_full_fit_delta_e76": 2.3253891468048096,
+            "full_reference_image": {
+              "clipped_percent_before": 0.04982587524654832,
+              "clipped_percent_after": 67.46816830004931,
+              "mean_absolute_change_8bit": 11.634993759245562
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 2.220446049250313e-16,
+            "coefficients": [
+              [
+                1.4784656565921714,
+                -0.022737916797028936,
+                -0.08290514145033669
+              ],
+              [
+                0.017475125725106778,
+                1.4198077407621421,
+                -0.3431057808408443
+              ],
+              [
+                -0.01579351555893345,
+                0.013489930373889264,
+                1.454857709843302
+              ],
+              [
+                -0.14777257638137392,
+                0.08132001822230872,
+                0.4250305362737669
+              ],
+              [
+                0.010875887933818712,
+                -0.166007051305272,
+                -0.3406937853798482
+              ],
+              [
+                -0.04874013544873715,
+                -0.0089783773336198,
+                0.13416488968388096
+              ]
+            ]
+          }
+        },
+        "root_minus_linear": {
+          "mean_held_out_delta_e76": -0.1740758866071701,
+          "patches_better": 11,
+          "patches_worse": 11,
+          "clipped_percent_after_difference": -0.0932607556706131
+        }
+      }
+    },
+    {
+      "UF_birds_ivory2/camera3": {
+        "patch_count": 24,
+        "models": {
+          "linear_3x3": {
+            "mean_held_out_delta_e76": 1.8621883392333984,
+            "median_held_out_delta_e76": 1.7026607990264893,
+            "max_held_out_delta_e76": 5.775047302246094,
+            "mean_full_fit_delta_e76": 1.6135969161987305,
+            "full_reference_image": {
+              "clipped_percent_before": 56.65080667529586,
+              "clipped_percent_after": 1.5409270216962525e-05,
+              "mean_absolute_change_8bit": 23.158562340770874
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 1.1102230246251565e-16,
+            "coefficients": [
+              [
+                0.747728803677184,
+                0.0024286288932231746,
+                -0.004864991881815731
+              ],
+              [
+                0.031962702975494604,
+                0.7387543862707922,
+                0.04061387240824686
+              ],
+              [
+                0.0015705822423568887,
+                -0.0011702645553814315,
+                0.7729342598800728
+              ]
+            ]
+          },
+          "root_polynomial_degree_2": {
+            "mean_held_out_delta_e76": 2.3930509090423584,
+            "median_held_out_delta_e76": 2.373373508453369,
+            "max_held_out_delta_e76": 5.256804466247559,
+            "mean_full_fit_delta_e76": 1.707759976387024,
+            "full_reference_image": {
+              "clipped_percent_before": 56.65080667529586,
+              "clipped_percent_after": 0.00015794501972386587,
+              "mean_absolute_change_8bit": 21.84341233152531
+            },
+            "exposure_homogeneity_max_abs_linear_rgb": 1.1102230246251565e-16,
+            "coefficients": [
+              [
+                0.6898515757838216,
+                -0.039204431891567686,
+                -0.030834374777657686
+              ],
+              [
+                -0.039853091431854434,
+                0.6868260949940242,
+                -0.00603040056753671
+              ],
+              [
+                -0.012783391740444013,
+                -0.0340943912090979,
+                0.6997120011386097
+              ],
+              [
+                0.12838164615693318,
+                0.07937260470147785,
+                0.03261478253554302
+              ],
+              [
+                0.03449398672694231,
+                0.04362668367643105,
+                0.05417518259162903
+              ],
+              [
+                -0.009248596902898035,
+                0.01337778710235257,
+                0.07219056326657941
+              ]
+            ]
+          }
+        },
+        "root_minus_linear": {
+          "mean_held_out_delta_e76": 0.5308626294136047,
+          "patches_better": 4,
+          "patches_worse": 19,
+          "clipped_percent_after_difference": 0.00014253574950690335
+        }
+      }
+    }
+  ],
+  "summary": {
+    "camera_comparisons": 4,
+    "held_out_predictions": 96,
+    "mean_linear_delta_e76": 2.573215812444687,
+    "mean_root_polynomial_delta_e76": 2.7905924320220947,
+    "root_relative_reduction": -0.08447663757004853,
+    "paired_root_minus_linear_mean": 0.21737653172264496,
+    "paired_root_minus_linear_bootstrap_95_percent_ci": [
+      -0.01673319025430828,
+      0.4536122137758258
+    ],
+    "maximum_camera_mean_worsening": 0.5308626294136047,
+    "maximum_clipping_increase_percentage_points": 0.00014253574950690335,
+    "maximum_exposure_homogeneity_residual": 2.220446049250313e-16,
+    "adoption_criteria": {
+      "pooled_mean_relative_reduction_at_least_10_percent": false,
+      "bootstrap_95_percent_ci_excludes_no_improvement": false,
+      "no_camera_mean_worse_by_more_than_0_25_delta_e76": false,
+      "no_reference_frame_clipping_increase_over_0_10_percentage_points": true,
+      "exposure_homogeneity_residual_below_1e_6": true
+    },
+    "recommendation": "retain_linear_3x3"
+  }
+}

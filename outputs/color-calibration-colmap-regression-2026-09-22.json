@@ -1,0 +1,53 @@
+{
+  "specimen": "UF_Herp_3998",
+  "date": "2026-09-22",
+  "purpose": "Compare masked sparse reconstruction before and after per-camera colour calibration.",
+  "subset": {
+    "source_group": "scale",
+    "images": 36,
+    "images_per_camera": 12,
+    "selection": "Every fourth image in filename order for each of camera1, camera2, and camera3."
+  },
+  "colmap": {
+    "version": "4.0.4",
+    "compute": "CPU; installed build reports no CUDA",
+    "camera_model": "SIMPLE_PINHOLE",
+    "camera_mode": "per image",
+    "max_image_size": 2400,
+    "matcher": "exhaustive",
+    "random_seed": 0,
+    "masks_confirmed": true
+  },
+  "original": {
+    "features": 242829,
+    "raw_matched_pairs": 296,
+    "raw_matches": 32178,
+    "verified_pairs": 171,
+    "verified_inliers": 28084,
+    "registered_images": 36,
+    "sparse_points": 3845,
+    "observations": 14423,
+    "mean_track_length": 3.751105,
+    "mean_observations_per_image": 400.638889,
+    "mean_reprojection_error_px": 0.669851
+  },
+  "calibrated": {
+    "features": 249981,
+    "raw_matched_pairs": 309,
+    "raw_matches": 33006,
+    "verified_pairs": 171,
+    "verified_inliers": 28658,
+    "registered_images": 36,
+    "sparse_points": 3929,
+    "observations": 14750,
+    "mean_track_length": 3.754136,
+    "mean_observations_per_image": 409.722222,
+    "mean_reprojection_error_px": 0.675661
+  },
+  "conclusion": "Pass: full registration was preserved; coverage metrics improved modestly while mean reprojection error changed by only 0.00581 px.",
+  "limitations": [
+    "This is a 36-image sparse-SfM regression on one specimen, not a full dense reconstruction benchmark.",
+    "Per-image camera intrinsics were used to match the repository wrapper's current configuration.",
+    "The result does not establish benefits for other specimens, lighting groups, or final mesh quality."
+  ]
+}

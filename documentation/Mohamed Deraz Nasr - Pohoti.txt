@@ -1,0 +1,82 @@
+======================================================
+HAAG Fall 2026 application
+======================================================
+Name:      Mohamed Deraz Nasr
+Email:     mnasr34@gatech.edu
+Hours:     More than 10 hours per week
+Intro to Research course: no
+Submitted: 2026-08-03
+------------------------------------------------------
+
+TEN-STEP PLAN
+1. First I'll clone Augenblick with its VGGT and Neuralangelo submodules to reproduce one complete run. Then i'd pin the Python, PyTorch, CUDA, and library versions in Docker (In case they require different environments) . Next, I would run the pipeline on a DTU benchmark scene using PACE and save the input images, commit hashes, configs, camera estimates, mesh, runtime, and GPU memory usage. Since the repo's testing and benchmark sections might be incomplete, I would add a pytest suite that verifies image loading, camera export, and mesh generation before changing the reconstruction methods.
+
+2. I would build a benchmark using a development subset of 10 DTU scenes because DTU provides calibrated cameras and structured reference scans. I would also use a pilot set of about 20 museum specimens selected with the Museum team. For each museum specimen, I would capture about 72–120 images across several elevations with 60–80% overlap and record physical measurements. The scale target would recover world dimensions, and the color chart would provide a reference for evaluating color accuracy.
+
+3. Next, I would add automated image preprocessing and input quality checks with a Python preprocessing stage built with OpenCV, ExifTool, and the Colour Science library. This stage would correct lens distortion, apply color calibration, resize images, and remove the background. Then I test Segment Anything 2 for object masks and inspect its performance on thin structures such as legs and bone edges. The preprocessing stage would also detect capture problems before reconstruction begins by measuring blur with Laplacian variance, detecting overexposed pixels from the image histogram and verifying that each specimen is visible from enough viewing angles.
+
+4. Then, I would compare VGGT for camera reconstruction. I would run 3 camera conditions on the same image set (COLMAP, frozen VGGT, and VGGT followed by bundle adjustment). I would then repeat the comparison with 24, 48, and 96 input views. On DTU, I would measure camera rotation error, translation error after scale alignment, reprojection error, registered image percentage, runtime, and peak VRAM usage. On the museum data, I would compare reprojection error, cross consistency, and reconstruction failure rate. This experiment would show whether VGGT reduces runtime without introducing camera errors that affect later stages.
+
+5. Next, I would build and test the interface between VGGT and Neuralangelo by writing a Python conversion tool with NumPy and pycolmap that converts VGGT outputs into the camera and scene into the expected format. The conversion would normalize the scene bounds and recover metric scale from the scale target. I'd also write tests that project 3D points into each camera, convert the cameras through the full pipeline, and confirm that the coordinates remain correct after conversion.
+
+6. After that I'd reconstruct the neural surface with Neuralangelo because it is designed to recover dense surfaces and fine detail from multi-view RGB images. I'd start with the published configuration and use the VGGT or COLMAP cameras selected in the previous experiment. I would reserve 20% of the images as held out views and train on the remaining 80%. Then during training, I would record training time, GPU memory usage, convergence, and mesh quality and run Instant-NGP as a fast appearance baseline.
+
+7. After reconstruction, I would extract the Neuralangelo signed distance field as a mesh with Marching Cubes. Then I'd use Open3D and Trimesh to remove disconnected background components and compute surface normals. I would log every cleanup operation so the pipeline never changes geometry without recording it. Then, I would generate UV coordinates with xatlas and bake textures from the calibrated source images with Blender's Python API. The final output would include a full-resolution PLY or OBJ for analysis and a GLB with a 4K or 8K texture for web visualization and CGI.
+
+8. Next, I would define and measure museum grade quality by evaluating geometry, color, and scientific usefulness. On DTU and any museum specimens with reference scans, I would compute surface accuracy, completeness, Chamfer distance, F-score, and normal consistency with Open3D or PyTorch3D. I would also compare digital landmark distances against the caliper measurements. As an initial acceptance target, I would aim for < 2% mean error in physical measurements, based on the COPIS natural history digitization study. Also I'd evaluate rendered views with PSNR, SSIM, and LPIPS and use CIEDE2000 to compare reconstructed colours against the reference images.
+
+9. Next, I would run ablation studies and document failure cases with Hydra configuration files and MLflow to track experiments across the number of images, image resolution, camera method, and surface reconstruction method. The ablations would compare different numbers of input views, image resolutions, COLMAP versus VGGT versus VGGT with bundle adjustment, and masks enabled versus disabled. I would repeat neural reconstruction runs with three random seeds on a smaller representative subset. I would report the mean and bootstrap confidence intervals and label failures by cause, including incorrect camera poses, missing thin structures, reflective surfaces, weak texture, poor masks, incomplete image coverage, and inaccurate color. This will help discern whether the pipeline needs a model improvement/ better image capture.
+
+10. Finally, I would package the selected workflow into a repeatable pipeline with Python and Snakemake. Each stage would have defined inputs and outputs and GPU intense stages would run on PACE, while lightweight validation checks would run in GitHub Actions. I would store the complete environment in a container and test it on a clean Linux machine. For each specimen, the pipeline would produce the mesh, textures, camera settings, scale information, configuration files, and other key outputs. Any failed quality checks would stop the pipeline and report what needs to be recaptured or reviewed. I would finish by testing the complete system on a group of museum specimens and use the feedback to define separate preview and museum quality presets.
+
+PRIOR RESEARCH
+I have experience with both independent and collaborative academic research. I published a study few-shot protein family classification using Prototypical Networks and built an episodic evaluation pipeline and compared several sequence encoders, including a CNN, k-mer representations, and ESM-2 with LoRA fine-tuning.
+https://zenodo.org/records/19200508
+
+I also co-authored a publication on an open-source framework for applying interpretability methods across different types of world models. My contribution focused on the framework’s documentation and on making its model interfaces and analyses easier to understand and reproduce.
+https://arxiv.org/abs/2606.09936
+
+My current research at Georgia Tech examines reconstruction when observations are missing from learned dynamics models. I am building an experimental framework to test different missing input patterns and measure how reconstruction errors affect later model rollouts. This work is still in progress and has not yet been published.
+
+During my undergraduate degree I also worked as a research assistant at the University of Ottawa on a solar forecasting system where I developed a retraining controller that used drift detection and policy evaluation to decide when the forecasting model should be updated.
+
+These projects have given me experience turning an initial question into a testable experiment, reading related work, choosing baselines, tracking results, and reporting outcomes honestly when they are incomplete or inconclusive.
+
+PROFESSIONAL EXPERIENCE
+I'm currently a Research Engineer Intern at Qualia, where I'm building an experimentation harness for improving VLA models for robotic manipulation. My work involves running policies in simulation, evaluating them under controlled changes, identifying failure cases, and comparing proposed improvements against matched baselines. 
+
+My closest technical project to photogrammetry is an image to 3D scene pipeline built with COLMAP, DROID-SLAM, 3D Gaussian Splatting, Open3D, and PyTorch. I worked with camera poses, point clouds, reconstruction confidence, and interactive visualization which would help me contribute to the camera estimation, reconstruction, and quality control stages of this project.
+https://github.com/MDerazNasr/Dream-nav
+
+For Google Summer of Code with Intel OpenVINO, I'm optimizing a Unitree VLA model for inference on Intel hardware. This includes debugging model export, profiling execution, and investigating graph and operator bottlenecks. This has given me experience making a model more efficient and dependable.
+https://github.com/MDerazNasr/openVINO-project-21
+
+I also have a graphics and GPU experience from building a C++/OpenGL Rubik's cube simulator with procedural geometry and camera controls, and  a C++/CUDA inference engine for iterative generative models. All Together these projects have prepared me to work across research code, 3D geometry, GPU-heavy reconstruction methods, and production pipelines.
+
+COURSES TAKEN
+Reinforcement Learning: CS 7642 (ongoing)
+Deep Learning: CS 7643 (ongoing)
+AI for Robotics: CS 7638
+Machine Learning for Trading: CS 7646
+
+COMPUTING RESOURCES
+I use my Macbook pro for most of my development. Whenever I needed for projects or for work I used a remote linux environment. I haven't yet used PACE specifically but I'm experienced with similar environments
+
+ONLINE RESOURCES THEY USE
+'- Augenblick, VGGT, Neuralangelo, and Instant-NGP GitHub repositories and papers
+- DTU dataset documentation and benchmark tools
+- COLMAP and pycolmap documentation
+- OpenCV, Open3D, Trimesh, PyTorch3D, and Colour Science documentation
+- Segment Anything 2, xatlas, and Blender Python API documentation
+- Hydra, MLflow, Snakemake, Docker, and GitHub Actions documentation
+- PACE
+- Research papers on museum digitization, photogrammetry, neural surface reconstruction, and 3D quality evaluation
+
+IF STUCK
+'- Reproduce the issue with the smallest possible example.
+- Check logs, configs, inputs, and environment versions.
+- Review the relevant paper, documentation, and GitHub issues.
+- Compare the failing stage against a known working baseline.
+- Ask my mentors or project team for feedback and help.
+- Test one change at a time and record the result.
+- If all else fails, switch to a different revised method so the project can continue.
