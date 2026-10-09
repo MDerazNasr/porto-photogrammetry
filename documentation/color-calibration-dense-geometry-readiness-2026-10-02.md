@@ -2,7 +2,7 @@
 
 ## Outcome
 
-The colour-calibration geometry-impact evaluation cannot yet be upgraded from the existing sparse-Delaunay regression proxy to a defensible dense/reference-mesh comparison. The limiting dependency is a valid matched dataset and reachable dense-compute environment, not an unimplemented metric.
+The colour-calibration geometry-impact evaluation cannot yet be upgraded from the existing sparse-Delaunay regression proxy to a defensible dense/reference-mesh comparison. A matched public specimen has now been identified, but the required source bundles, Syed's derived CT surface, and a reachable dense-compute environment are not yet available locally. The remaining limitation is access/execution, not an unimplemented metric.
 
 Do not use the historical unlabeled PLY attachments as evidence for PR 18. Their specimen, reconstruction settings, reference relationship, and calibration condition cannot be established.
 
@@ -14,6 +14,22 @@ Do not use the historical unlabeled PLY attachments as evidence for PR 18. Their
 - Project notes identify paired structured-light scans in the broader study, including four linked specimen records, but no corresponding usable mesh files or current storage path are available locally.
 - A read-only SSH probe to `login-ice.pace.gatech.edu` timed out on port 22 on 2 October, so the expected PACE-side assets and reconstruction environment could not be inspected.
 - A Slack sweep through 2 October found no newly shared mesh or path. On 1 October, Syed asked Arthur for a CT specimen; Arthur said he would look for one with both CT and photogrammetry. Syed also said densely tessellated structured-light scans remain preferred.
+
+## Matched specimen identified on 9 October
+
+Syed's 3 October Slack update names `UF:Herp:84427` (`Gopherus polyphemus`) and shows a CT-derived surface produced with Otsu thresholding, outside-in ray filtering, and marching cubes. The Slack attachment is a screenshot only; the derived mesh, script, parameters, and storage path were not attached, and the message has no thread replies.
+
+Mohamed posted the matched-record finding and the precise asset/provenance request in Syed's thread on 9 October: https://humanaugmente-e7j6563.slack.com/archives/C08TNEM1WHF/p1791552733461409?thread_ts=1791047751.260929&cid=C08TNEM1WHF
+
+The public MorphoSource API confirms that physical object `000484506` has all three relevant open media records:
+
+| Media ID | Record | File metadata | Role |
+|---|---|---|---|
+| `000574722` | `Dice Ct [CTImageSeries] [CT]` | `UF-herp-84427-diceCT.zip`, 2,541,368,544 bytes, 1,809 TIFF slices, 0.04222976 mm isotropic spacing | CT source/reference candidate |
+| `000484510` | `Element Unspecified [PhotogrammetryImageSeries] [Photogram]` | `Image_series.zip`, 1,474,776,814 bytes, 437 JPEGs at 6240 x 4160 | matched reconstruction source |
+| `000484545` | `Preserved Head [Mesh] [Photogram]` | `Morphosource.zip`, 95,420,789 bytes, OBJ with 1,363,478 points and 2,726,960 faces | existing photogrammetry baseline/reference check |
+
+The CT and photogrammetry records refer to the same physical-object ID, but this does not by itself prove identical pose, crop, or surface domain. The photogrammetry mesh is a prior reconstruction, not the required controlled original-versus-calibrated pair. The image bundle must also be inspected for camera-specific colour-chart frames before this specimen can exercise PR 18's calibrated condition.
 
 ## Fixed evaluation protocol once the dependency arrives
 
@@ -36,9 +52,10 @@ Do not use the historical unlabeled PLY attachments as evidence for PR 18. Their
 
 ## Immediate unblock request
 
-Obtain either (preferably both):
+Obtain:
 
-- the storage path/access instructions for one of the existing densely tessellated structured-light reference meshes and its matched photogrammetry source set; or
-- the CT-plus-photogrammetry specimen Arthur is locating, with enough provenance to construct a paired evaluation.
+- access to the open MorphoSource bundles for media `000574722`, `000484510`, and `000484545` (the current shell has no `MORPHOSOURCE_API_KEY`);
+- Syed's derived CT mesh, script/commit, parameters, and transform/provenance, or permission and compute to reproduce it from the CT bundle; and
+- confirmation that the 437-image photogrammetry bundle contains usable colour-reference frames. If it does not, use a different same-specimen capture with chart measurements or treat `UF:Herp:84427` only as geometry-framework validation.
 
-Once one valid specimen is accessible and a CUDA reconstruction host is reachable, the protocol above is ready to run without another scoping pass.
+The existing structured-light option remains preferred if its matched source set becomes available. Once the bundles and a CUDA reconstruction host are reachable, the protocol above is ready to run without another scoping pass.
