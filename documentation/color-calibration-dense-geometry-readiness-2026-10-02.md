@@ -31,6 +31,10 @@ The public MorphoSource API confirms that physical object `000484506` has all th
 
 The CT and photogrammetry records refer to the same physical-object ID, but this does not by itself prove identical pose, crop, or surface domain. The photogrammetry mesh is a prior reconstruction, not the required controlled original-versus-calibrated pair. The image bundle must also be inspected for camera-specific colour-chart frames before this specimen can exercise PR 18's calibrated condition.
 
+The public representative thumbnail for media `000484510` shows the preserved head, foam support, and a coded metric bar; no colour chart is visible in that one preview. This is not evidence that the 437-image bundle lacks separate chart frames. The IIIF manifest requires authentication, so the remaining frames cannot be inventoried through the public preview interface.
+
+MorphoSource's official REST specification requires a user API key, a download-use statement of at least 50 characters, a use category (or custom category), and explicit acceptance of the applicable agreements before it returns a direct download URL. The current shell has no `MORPHOSOURCE_API_KEY`; download must therefore wait for the user to configure credentials and authorize agreement acceptance. Do not place the key in source control, logs, chat, or documentation.
+
 ## Fixed evaluation protocol once the dependency arrives
 
 1. Select one specimen for which the exact same photographs, masks, camera/reconstruction settings, and code commit can be used in both conditions.
@@ -54,7 +58,7 @@ The CT and photogrammetry records refer to the same physical-object ID, but this
 
 Obtain:
 
-- access to the open MorphoSource bundles for media `000574722`, `000484510`, and `000484545` (the current shell has no `MORPHOSOURCE_API_KEY`);
+- user-authorized access to the open MorphoSource bundles for media `000574722`, `000484510`, and `000484545` (configure `MORPHOSOURCE_API_KEY` outside source control and explicitly accept the applicable use agreements);
 - Syed's derived CT mesh, script/commit, parameters, and transform/provenance, or permission and compute to reproduce it from the CT bundle; and
 - confirmation that the 437-image photogrammetry bundle contains usable colour-reference frames. If it does not, use a different same-specimen capture with chart measurements or treat `UF:Herp:84427` only as geometry-framework validation.
 
